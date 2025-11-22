@@ -4,7 +4,8 @@
       "Bash(mkdir:*)",
       "Bash(python3:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nConvert WordPress site to static HTML for free hosting\n\nMigrated Modern Mother''s Helper website from WordPress/Bluehost to a free static site hosted on GitHub Pages.\n\n- Parsed WordPress XML export to extract all pages and posts\n- Generated clean, semantic HTML with modern CSS\n- Created 8 published pages and 1 blog post\n- Built responsive, mobile-friendly design\n- Eliminated hosting costs by moving to GitHub Pages\n\nSite structure:\n- Homepage with service overview\n- About, Services, Contact, Job Seekers pages\n- Gift Card and Client portal pages\n- Modern CSS with professional styling\n- Ready for GitHub Pages deployment\n\nNext steps: Configure custom domain and download media assets.\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []
