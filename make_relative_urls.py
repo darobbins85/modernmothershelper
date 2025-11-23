@@ -27,15 +27,26 @@ def fix_html_file(filepath):
 
     # Create the relative path prefix (../ for each level deep)
     if depth == 0:
-        prefix = "."
+        prefix = "."  # Root level - no prefix needed for GitHub Pages
     else:
         prefix = "../" * depth
         prefix = prefix.rstrip("/")
 
+    # For root level files, use empty prefix to avoid ./
+    if depth == 0:
+        url_prefix = ""
+    else:
+        url_prefix = prefix + "/"
+
     # Fix href and src attributes that start with /
     # But don't change external URLs (http://, https://, mailto:, tel:, etc.)
     content = re.sub(
-        r'(href|src)="/((?!http|https|mailto|tel|#))', rf'\1="{prefix}/\2', content
+        r'(href|src)="/((?!http|https|mailto|tel|#))', rf'\1="{url_prefix}\2', content
+    )
+
+    # Fix CSS url() functions that start with /
+    content = re.sub(
+        r'url\("/((?!http|https|mailto|tel|#))', rf'url("{url_prefix}\1', content
     )
 
     # Fix CSS url() functions that start with /
